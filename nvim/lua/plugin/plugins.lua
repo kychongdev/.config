@@ -11,7 +11,7 @@ return require('packer').startup(function()
 
   -- LSP and completion
   use { 'neovim/nvim-lspconfig' }
-  use { 'nvim-lua/completion-nvim' }
+  use { 'hrsh7th/nvim-cmp' }
 
   -- Fugitive for Git
   use { 'tpope/vim-fugitive' }
