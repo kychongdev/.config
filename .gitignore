@@ -1,2 +1,4 @@
 .DS_Store
 karabiner
+
+nvim/plugin/packer_compiled.lua
