@@ -4,13 +4,13 @@ window:
   decorations: buttonless 
 font:
   normal:
-    family: JetBrains Mono
+    family: MesloLGS Nerd Font 
   bold:
-    family: JetBrains Mono
+    family: MesloLGS Nerd Font
   italic:
-    family: JetBrains Mono
+    family: MesloLGS Nerd Font
   bold_italic:
-    family: JetBrains Mono
+    family: MesloLGS Nerd Font
   size: 22.0
 
 # (Nord)
