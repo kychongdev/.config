@@ -18,11 +18,22 @@ return require('packer').startup(function()
 
   -- Fugitive for Git
   use { 'tpope/vim-fugitive' }
+  use {
+  'lewis6991/gitsigns.nvim',
+  requires = {
+    'nvim-lua/plenary.nvim'
+  },
+  -- tag = 'release' -- To use the latest release
+}
 
+  -- File explorer
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
+
+  -- Statusline
+  use { 'feline-nvim/feline.nvim' }
 }
 end)
