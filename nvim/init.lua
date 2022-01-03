@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
 vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
-require('packer')
-require('lspconfig')
-require('telescope')
+require('plugin.packer')
+require('plugin.lspconfig')
+require('plugin.telescope')
