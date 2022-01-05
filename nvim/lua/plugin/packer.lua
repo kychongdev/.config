@@ -15,6 +15,7 @@ return require('packer').startup(function()
   use { 'hrsh7th/cmp-nvim-lsp' }
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip'
+  use 'nvim-treesitter/nvim-treesitter'
 
   -- Fugitive for Git
   use { 'tpope/vim-fugitive' }
@@ -32,8 +33,11 @@ return require('packer').startup(function()
     requires = {
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
-
+}
   -- Statusline
   use { 'feline-nvim/feline.nvim' }
-}
+
+  -- Bufferline
+  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+
 end)
