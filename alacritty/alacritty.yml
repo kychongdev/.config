@@ -1,16 +1,16 @@
-background_opacity: 0.8 
 
 window:
   decorations: buttonless 
+  opacity: 0.8
 font:
   normal:
-    family: MesloLGS Nerd Font 
+    family: MesloLGS NF
   bold:
-    family: MesloLGS Nerd Font
+    family: MesloLGS NF
   italic:
-    family: MesloLGS Nerd Font
+    family: MesloLGS NF
   bold_italic:
-    family: MesloLGS Nerd Font
+    family: MesloLGS NF
   size: 22.0
 
 # (Nord)
