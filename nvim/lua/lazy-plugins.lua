@@ -210,7 +210,13 @@ require('lazy').setup({
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     requires = { { "nvim-lua/plenary.nvim" } },
+  },
+  {
+    'neoclide/coc.nvim',
+    branch = 'master',
+    run = 'npm i'
   }
+
 }, {})
 
 -- vim: ts=2 sts=2 sw=2 et
