@@ -213,8 +213,8 @@ require('lazy').setup({
   },
   {
     'neoclide/coc.nvim',
-    branch = 'master',
-    run = 'npm i'
+    branch = 'release',
+    run = 'npm ci'
   }
 
 }, {})
