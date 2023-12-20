@@ -77,3 +77,6 @@ require 'cmp-setup'
 
 -- [[ Configure Harpoon ]]
 require 'harpoon-setup'
+
+require 'null-ls-setup'
+require 'prettier-setup'

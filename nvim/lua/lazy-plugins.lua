@@ -206,16 +206,22 @@ require('lazy').setup({
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
   { "nvim-lua/plenary.nvim" },
+
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     requires = { { "nvim-lua/plenary.nvim" } },
   },
+
   {
     'neoclide/coc.nvim',
     branch = 'release',
     run = 'npm ci'
-  }
+  },
+
+  -- { 'neovim/nvim-lspconfig' },
+  { 'jose-elias-alvarez/null-ls.nvim' },
+  { 'MunifTanjim/prettier.nvim' }
 
 }, {})
 
