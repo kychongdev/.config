@@ -127,12 +127,30 @@ require('lazy').setup({
     },
   },
 
+  -- {
+  --   -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
+  -- },
+
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    "sainnhe/gruvbox-material",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.o.background = "dark" -- or "light" for light mode
+      vim.cmd("let g:gruvbox_material_background= 'hard'")
+      vim.cmd("let g:gruvbox_material_diagnostic_line_highlight=1")
+      vim.cmd("let g:gruvbox_material_diagnostic_virtual_text='colored'")
+      vim.cmd("let g:gruvbox_material_enable_bold=1")
+      vim.cmd("let g:gruvbox_material_enable_italic=1")
+      vim.cmd([[colorscheme gruvbox-material]]) -- Set color scheme
+      -- changing bg and border colors
+      vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
+      vim.api.nvim_set_hl(0, "LspInfoBorder", { link = "Normal" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
     end,
   },
 
@@ -207,12 +225,19 @@ require('lazy').setup({
   -- { import = 'custom.plugins' },
   { "nvim-lua/plenary.nvim" },
 
+  -- For self define buffertab
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     requires = { { "nvim-lua/plenary.nvim" } },
   },
-  { 'sbdchd/neoformat' }
+
+  -- To use prettier because my job need it
+  { 'sbdchd/neoformat' },
+
+
+  { 'akinsho/toggleterm.nvim', version = "*", config = true }
+
 }, {})
 
 -- vim: ts=2 sts=2 sw=2 et
