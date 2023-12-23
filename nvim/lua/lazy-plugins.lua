@@ -212,17 +212,6 @@ require('lazy').setup({
     branch = "harpoon2",
     requires = { { "nvim-lua/plenary.nvim" } },
   },
-
-  {
-    'neoclide/coc.nvim',
-    branch = 'release',
-    run = 'npm ci'
-  },
-
-  -- { 'neovim/nvim-lspconfig' },
-  { 'jose-elias-alvarez/null-ls.nvim' },
-  { 'MunifTanjim/prettier.nvim' }
-
 }, {})
 
 -- vim: ts=2 sts=2 sw=2 et
