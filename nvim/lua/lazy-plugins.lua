@@ -212,6 +212,7 @@ require('lazy').setup({
     branch = "harpoon2",
     requires = { { "nvim-lua/plenary.nvim" } },
   },
+  { 'sbdchd/neoformat' }
 }, {})
 
 -- vim: ts=2 sts=2 sw=2 et

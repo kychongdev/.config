@@ -77,3 +77,14 @@ require 'cmp-setup'
 
 -- [[ Configure Harpoon ]]
 require 'harpoon-setup'
+
+-- [[ Configure Neoformat ]]
+vim.g.neoformat_try_node_exe = 1
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.js", "*.jsx", "*.ts", ".tsx", "*.html", "css", "scss" },
+  callback = function()
+    vim.cmd("Neoformat prettier")
+  end
+})
+
+-- [Configure Neoformat]
