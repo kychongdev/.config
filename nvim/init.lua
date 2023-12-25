@@ -78,8 +78,6 @@ require 'cmp-setup'
 -- [[ Configure Harpoon ]]
 require 'harpoon-setup'
 
-require 'toggleterm'
-
 -- [[ Configure Neoformat ]]
 vim.g.neoformat_try_node_exe = 1
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -88,3 +86,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.cmd("Neoformat prettier")
   end
 })
+
+vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")

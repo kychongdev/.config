@@ -236,7 +236,21 @@ require('lazy').setup({
   { 'sbdchd/neoformat' },
 
 
-  { 'akinsho/toggleterm.nvim', version = "*", config = true }
+  -- {
+  --   'akinsho/toggleterm.nvim',
+  --   version = "*",
+  --   config = true
+  -- },
+
+  -- Useless plugin that I dont know I want it so desperately
+  { 'eandrju/cellular-automaton.nvim' },
+
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  }
 
 }, {})
 
