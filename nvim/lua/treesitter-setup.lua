@@ -68,3 +68,4 @@ vim.defer_fn(function()
 end, 0)
 
 -- vim: ts=2 sts=2 sw=2 et
+vim.treesitter.language.register('markdown', 'mdx') -- the someft filetype will use the python parser and queries.

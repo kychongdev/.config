@@ -88,3 +88,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
+
+vim.filetype.add({
+  extension = {
+    mdx = 'mdx'
+  }
+})
