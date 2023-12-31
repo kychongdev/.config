@@ -81,7 +81,7 @@ require 'harpoon-setup'
 -- [[ Configure Neoformat ]]
 vim.g.neoformat_try_node_exe = 1
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.html", "*.css", "*.scss" },
+  pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.html", "*.css", "*.scss", "*.md", "*.mdx" },
   callback = function()
     vim.cmd("Neoformat prettier")
   end
