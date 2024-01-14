@@ -80,9 +80,12 @@ local servers = {
   -- pyright = {},
   rust_analyzer = {},
   tsserver = {},
-  html = { filetypes = { 'html', 'twig', 'hbs' } },
+  html = { filetypes = { 'twig', 'hbs' } },
   tailwindcss = {},
-
+  biome = {
+    -- filetypes =
+    -- { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescript.tsx", "typescriptreact" }
+  },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
