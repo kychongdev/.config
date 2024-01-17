@@ -112,19 +112,11 @@ source $HOME/.asdf/asdf.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias main="cd ~/vvinners/dreamsoft/"
-alias mobile="cd ~/vvinners/dreamsoft/packages/templates/abcTemplate/mobile"
-alias player="cd ~/vvinners/dreamsoft/packages/player-frontend"
-alias tenant="cd ~/vvinners/dreamsoft/packages/tenant"
-alias proxy="cd ~/vvinners/dreamsoft/packages/proxy"
-alias admin="cd ~/vvinners/dreamsoft/packages/admin"
-alias bo="cd ~/vvinners/dreamsoft/packages/backoffice-frontend"
-alias sd="skaffold dev"
-alias rdreamsoft="cd ~/.local/share/tmux/resurrect;ln -sf dreamsoft.txt last"
 alias n="nvim ."
 alias nz="nvim ~/.zshrc"
 alias nc="nvim ~/.config/nvim/"
 alias nt="nvim ~/.tmux.conf"
+source ~/.config/zsh/.zsh_alias
 
 eval "$(fnm env --use-on-cd)"
 
