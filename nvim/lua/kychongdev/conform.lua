@@ -5,7 +5,7 @@ require("conform").setup({
     html = { "prettier" },
     css = { "prettier" },
     ["*.tsx"] = { "prettier" },
-    ["*.ts"] = { "prettier" }
+    ["*.ts"] = { "prettier" },
     ["*.jsx"] = { "prettier" },
     ["*.js"] = { "prettier" }
   },
