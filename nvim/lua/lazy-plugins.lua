@@ -233,7 +233,7 @@ require('lazy').setup({
   },
 
   -- To use prettier because my job need it
-  { 'sbdchd/neoformat' },
+  -- { 'sbdchd/neoformat' },
 
 
   -- {
@@ -254,7 +254,8 @@ require('lazy').setup({
   {
     "christoomey/vim-tmux-navigator",
     lazy = false
-  }
+  },
+  { "dense-analysis/ale" }
 
 }, {})
 

@@ -79,13 +79,13 @@ require 'cmp-setup'
 require 'harpoon-setup'
 
 -- [[ Configure Neoformat ]]
-vim.g.neoformat_try_node_exe = 1
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.html", "*.css", "*.scss", "*.md", "*.mdx" },
-  callback = function()
-    vim.cmd("Neoformat prettier")
-  end
-})
+-- vim.g.neoformat_try_node_exe = 1
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.html", "*.css", "*.scss", "*.md", "*.mdx" },
+--   callback = function()
+--     vim.cmd("Neoformat prettier")
+--   end
+-- })
 
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 
@@ -94,3 +94,6 @@ vim.filetype.add({
     mdx = 'mdx'
   }
 })
+
+vim.cmd [[let g:ale_fix_on_save = 1]]
+vim.cmd [[let g:ale_linters = { 'go': ['golangci-lint'] } ]]
