@@ -3,8 +3,10 @@
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+-- jk to esc
 vim.keymap.set('i', 'jk', '<Esc>', {})
-vim.keymap.set('n', '<leader>:', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>:', vim.cmd.Ex, { desc = 'Quit to menu' })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })

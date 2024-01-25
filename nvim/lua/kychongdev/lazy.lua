@@ -21,12 +21,12 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
+      { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -127,33 +127,6 @@ require('lazy').setup({
     },
   },
 
-  -- {
-  --   -- Theme inspired by Atom
-  --   'navarasu/onedark.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
-
-  {
-    "sainnhe/gruvbox-material",
-    priority = 1000,
-    config = function()
-      vim.o.background = "dark" -- or "light" for light mode
-      vim.cmd("let g:gruvbox_material_background= 'hard'")
-      vim.cmd("let g:gruvbox_material_diagnostic_line_highlight=1")
-      vim.cmd("let g:gruvbox_material_diagnostic_virtual_text='colored'")
-      vim.cmd("let g:gruvbox_material_enable_bold=1")
-      vim.cmd("let g:gruvbox_material_enable_italic=1")
-      vim.cmd([[colorscheme gruvbox-material]]) -- Set color scheme
-      -- changing bg and border colors
-      vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
-      vim.api.nvim_set_hl(0, "LspInfoBorder", { link = "Normal" })
-      vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
-    end,
-  },
-
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -161,7 +134,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'gruvbox',
+        theme = 'onedark',
         component_separators = '|',
         section_separators = '',
       },
@@ -210,51 +183,56 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  require 'kickstart.plugins.autoformat',
-  require 'kickstart.plugins.debug',
+  {
+    'neovim/nvim-lspconfig',
+  },
 
-  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-  --    up-to-date with whatever is in the kickstart repo.
-  --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  --
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
-  { "nvim-lua/plenary.nvim" },
+  {
+    -- NOTE: Yes, you can install new plugins here!
+    'mfussenegger/nvim-dap',
+    -- NOTE: And you can specify dependencies as well
+    dependencies = {
+      -- Creates a beautiful debugger UI
+      'rcarriga/nvim-dap-ui',
 
-  -- For self define buffertab
+      -- Installs the debug adapters for you
+      'williamboman/mason.nvim',
+      'jay-babu/mason-nvim-dap.nvim',
+
+      -- Add your own debuggers here
+      'leoluz/nvim-dap-go',
+    },
+  },
+
+  -- Gruvbox Theme
+  {
+    "sainnhe/gruvbox-material",
+    priority = 1000,
+    config = function()
+      vim.o.background = "dark" -- or "light" for light mode
+      vim.cmd("let g:gruvbox_material_background= 'hard'")
+      vim.cmd("let g:gruvbox_material_diagnostic_line_highlight=1")
+      vim.cmd("let g:gruvbox_material_diagnostic_virtual_text='colored'")
+      vim.cmd("let g:gruvbox_material_enable_bold=1")
+      vim.cmd("let g:gruvbox_material_enable_italic=1")
+      vim.cmd([[colorscheme gruvbox-material]]) -- Set color scheme
+      -- changing bg and border colors
+      vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
+      vim.api.nvim_set_hl(0, "LspInfoBorder", { link = "Normal" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+    end,
+  },
+
+  {
+    'stevearc/conform.nvim',
+    opts = {},
+  },
+
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
-    requires = { { "nvim-lua/plenary.nvim" } },
+    dependencies = { { "nvim-lua/plenary.nvim" } },
   },
-
-  -- To use prettier because my job need it
-  { 'sbdchd/neoformat' },
-
-
-  -- {
-  --   'akinsho/toggleterm.nvim',
-  --   version = "*",
-  --   config = true
-  -- },
-
-  -- Useless plugin that I dont know I want it so desperately
-  { 'eandrju/cellular-automaton.nvim' },
-
-  {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
-  },
-  {
-    "christoomey/vim-tmux-navigator",
-    lazy = false
-  }
 
 }, {})
 

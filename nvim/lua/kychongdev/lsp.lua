@@ -76,16 +76,12 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
-  gopls = {},
+  -- gopls = {},
   -- pyright = {},
-  rust_analyzer = {},
-  tsserver = {},
-  html = { filetypes = { 'twig', 'hbs' } },
-  tailwindcss = {},
-  -- biome = {
-  --   filetypes =
-  --   { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescript.tsx", "typescriptreact" }
-  -- },
+  -- rust_analyzer = {},
+  -- tsserver = {},
+  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
