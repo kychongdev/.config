@@ -113,9 +113,9 @@ source $HOME/.asdf/asdf.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias n="nvim ."
-alias nz="nvim ~/.zshrc"
-alias nc="nvim ~/.config/nvim/"
-alias nt="nvim ~/.tmux.conf"
+alias nz="cd nvim .zshrc"
+alias nc="cd ~/.config/nvim/ && nvim ."
+alias nt="cd ~/.tmux.conf && nvim ."
 source ~/.config/zsh/.zsh_alias
 
 eval "$(fnm env --use-on-cd)"
