@@ -8,3 +8,8 @@ alias bo="cd ~/vvinners/dreamsoft/packages/backoffice-frontend"
 alias sd="skaffold dev"
 alias rdreamsoft="cd ~/.local/share/tmux/resurrect;ln -sf dreamsoft.txt last"
 alias rtime="cd ~/.local/share/tmux/resurrect;ln -sf time.txt last"
+
+alias tmain="cd ~/vvinners/monorepo/"
+alias tadminfe="cd ~/vvinners/monorepo/packages/admin-frontend/"
+alias tcore="cd ~/vvinners/monorepo/packages/core-service/"
+alias treport="cd ~/vvinners/monorepo/packages/report-service/"
