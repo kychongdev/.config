@@ -4,10 +4,10 @@ require("conform").setup({
     javascript = { "prettier" },
     html = { "prettier" },
     css = { "prettier" },
+    markdown = { "prettier" },
+    typescript = { "prettier" },
     ["*.tsx"] = { "prettier" },
-    ["*.ts"] = { "prettier" },
     ["*.jsx"] = { "prettier" },
-    ["*.js"] = { "prettier" }
   },
   format_on_save = {
     -- I recommend these options. See :help conform.format for details.
