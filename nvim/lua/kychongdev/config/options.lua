@@ -42,3 +42,6 @@ vim.o.termguicolors = true
 -- Relative line on
 vim.o.relativenumber = true
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Turn off swapfile
+vim.o.swapfile = false
