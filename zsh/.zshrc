@@ -113,7 +113,7 @@ source $HOME/.asdf/asdf.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias n="nvim ."
-alias nz="cd; nvim .zshrc"
+alias nz="cd ~/.config/zsh; nvim ."
 alias nc="cd ~/.config/nvim; nvim ."
 alias nt="cd ~/.config/tmux; nvim ."
 source ~/.config/zsh/.zsh_alias
