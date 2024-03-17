@@ -45,3 +45,6 @@ vim.o.relativenumber = true
 
 -- Turn off swapfile
 vim.o.swapfile = false
+
+-- Set tab for copilot
+vim.g.copilot_no_tab_map = true

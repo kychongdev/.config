@@ -234,6 +234,19 @@ require('lazy').setup({
     dependencies = { { "nvim-lua/plenary.nvim" } },
   },
 
+  -- Markdown Preview
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+
+  -- Co pilot
+  {
+    "github/copilot.vim"
+  }
+
 }, {})
 
 -- vim: ts=2 sts=2 sw=2 et

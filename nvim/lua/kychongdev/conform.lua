@@ -6,12 +6,13 @@ require("conform").setup({
     css = { "prettier" },
     typescript = { "prettier" },
     markdown = { "prettier" },
-    ["*.tsx"] = { "prettier" },
-    ["*.jsx"] = { "prettier" },
+    typescriptreact = { "prettier" },
+    javascriptreact = { "prettier" },
+    scss = { "prettier" },
   },
   format_on_save = {
     -- I recommend these options. See :help conform.format for details.
-    lsp_fallback = true,
+    -- lsp_fallback = true,
     timeout_ms = 500,
   },
   notify_on_error = true,
