@@ -12,15 +12,15 @@ return {
       function()
         require('harpoon'):list():append()
       end,
-      desc = 'Append to harpoon',
+      desc = '[A]ppend to harpoon',
     },
     {
-      '<leader>f',
+      '<leader>h',
       function()
         local harpoon = require 'harpoon'
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end,
-      desc = 'Open harpoon menu',
+      desc = 'Open [H]arpoon menu',
     },
   },
 }
