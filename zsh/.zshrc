@@ -116,7 +116,6 @@ alias n="nvim ."
 alias nz="cd ~/.config/zsh; nvim ."
 alias nc="cd ~/.config/nvim; nvim ."
 alias nt="cd ~/.config/tmux; nvim ."
-source ~/.config/zsh/.zsh_alias
 
 eval "$(fnm env --use-on-cd)"
 
