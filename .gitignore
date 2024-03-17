@@ -1,6 +1,6 @@
 .DS_Store
 .idea
 jgit
-github_copilot/
+github-copilot/
 
 nvim/plugin/packer_compiled.lua
