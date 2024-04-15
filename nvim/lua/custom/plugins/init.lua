@@ -28,14 +28,13 @@ return {
     branch = 'harpoon2',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
-      ---@diagnostic disable-next-line: missing-parameter
       require('harpoon'):setup()
     end,
     keys = {
       {
         '<leader>a',
         function()
-          require('harpoon'):list():append()
+          require('harpoon'):list():add()
         end,
         desc = '[A]ppend to harpoon',
       },
