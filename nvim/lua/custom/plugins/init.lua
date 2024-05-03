@@ -39,7 +39,7 @@ return {
         desc = '[A]ppend to harpoon',
       },
       {
-        '<leader>l',
+        '<leader>n',
         function()
           local harpoon = require 'harpoon'
           harpoon.ui:toggle_quick_menu(harpoon:list())
