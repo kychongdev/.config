@@ -4,4 +4,5 @@ jgit
 github-copilot/
 zed/
 
+nvim/.github
 nvim/plugin/packer_compiled.lua
