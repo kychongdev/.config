@@ -195,7 +195,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- My Keybind
 vim.keymap.set('i', 'jk', '<Esc>', {})
-vim.keymap.set('n', '<leader>:', vim.cmd.Ex, { desc = 'Quit to file menu' })
+vim.keymap.set('n', '<leader>:', '<CMD>Oil<CR>', { desc = 'Back to directory' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`

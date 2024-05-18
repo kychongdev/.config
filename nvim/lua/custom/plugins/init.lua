@@ -90,4 +90,24 @@ return {
       }
     end,
   },
+  {
+    'stevearc/oil.nvim',
+    opts = {
+      columns = {
+        -- 'permissions',
+        -- 'mtime',
+        -- 'size',
+        'icon',
+      },
+      keymaps = {
+        ['<C-h>'] = false,
+      },
+      view_options = {
+        -- Show files and directories that start with "."
+        show_hidden = true,
+      },
+    },
+    -- Optional dependencies
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
 }
