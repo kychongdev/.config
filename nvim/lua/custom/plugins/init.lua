@@ -31,11 +31,19 @@ return {
   {
     'github/copilot.vim',
   },
-  {
-    'pmizio/typescript-tools.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    opts = {},
-  },
+  -- {
+  --   'pmizio/typescript-tools.nvim',
+  --   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+  --   opts = {},
+  --   config = function()
+  --     require('typescript-tools').setup {
+  --       handlers = {
+  --         root_dir = require('lspconfig').util.root_pattern 'package.json',
+  --         single_file_support = false, -- must set to false
+  --       },
+  --     }
+  --   end,
+  -- },
   {
     'sainnhe/gruvbox-material',
     priority = 1000,

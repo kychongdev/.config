@@ -625,16 +625,25 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
+        gopls = {},
         -- pyright = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {
+          capabilities = capabilities,
+          root_dir = require('lspconfig').util.root_pattern 'package.json',
+          single_file_support = false, -- must set to false
+        },
+        --
+        denols = {
+          capabilities = capabilities,
+          root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc'),
+        },
         --
 
         lua_ls = {
@@ -699,12 +708,12 @@ require('lazy').setup({
       },
     },
     opts = {
-      notify_on_error = false,
+      notify_on_error = true,
       format_on_save = function(bufnr)
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { c = true, cpp = true, lua = true, Lua = true, typescriptreact = true }
         local lsp_format_opt
         if disable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'never'
@@ -717,20 +726,20 @@ require('lazy').setup({
         }
       end,
       formatters_by_ft = {
-        lua = { 'stylua' },
+        lua = { 'stylua', stop_after_first = true },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
-        javascript = { { 'biome', 'prettierd', 'prettier' } },
-        html = { 'prettier' },
-        css = { 'prettier' },
-        typescript = { 'biome', 'prettier' },
+        javascript = { 'prettier', 'deno_fmt', 'biome', 'prettier', stop_after_first = true },
+        html = { 'prettier', 'deno_fmt', 'biome', stop_after_first = true },
+        css = { 'prettier', 'deno_fmt', 'biome', stop_after_first = true },
+        typescript = { 'prettier', 'deno_fmt', 'biome', stop_after_first = true },
         markdown = { 'prettier' },
-        typescriptreact = { 'prettier' },
-        javascriptreact = { 'prettier' },
-        ['json'] = { 'biome' },
+        typescriptreact = { 'prettier', 'deno_fmt', 'biome', stop_after_first = true },
+        javascriptreact = { 'prettier', 'deno_fmt', 'biome', stop_after_first = true },
+        ['json'] = { 'prettier', 'deno_fmt', 'biome', stop_after_first = true },
       },
     },
   },
