@@ -173,7 +173,6 @@ vim.opt.confirm = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -582,6 +581,19 @@ require('lazy').setup({
             end
           end
 
+          -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
+          ---@param client vim.lsp.Client
+          ---@param method vim.lsp.protocol.Method
+          ---@param bufnr? integer some lsp support methods only in specific files
+          ---@return boolean
+          local function client_supports_method(client, method, bufnr)
+            if vim.fn.has 'nvim-0.11' == 1 then
+              return client:supports_method(method, bufnr)
+            else
+              return client.supports_method(method, { bufnr = bufnr })
+            end
+          end
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
@@ -774,9 +786,9 @@ require('lazy').setup({
         css = { 'prettier', 'deno_fmt', 'biome', stop_after_first = true },
         typescript = { 'prettier', 'deno_fmt', 'biome', stop_after_first = true },
         markdown = { 'prettier' },
-        typescriptreact = { 'prettier', 'deno_fmt', 'biome', stop_after_first = true },
-        javascriptreact = { 'prettier', 'deno_fmt', 'biome', stop_after_first = true },
-        ['json'] = { 'prettier', 'deno_fmt', 'biome', stop_after_first = true },
+        typescriptreact = { 'prettier', 'biome', stop_after_first = true },
+        javascriptreact = { 'prettier', 'biome', stop_after_first = true },
+        ['json'] = { 'prettier', 'biome', stop_after_first = true },
       },
     },
   },
@@ -898,7 +910,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
 
