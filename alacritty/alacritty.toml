@@ -3,9 +3,10 @@ general.import = [
 ]
 
 [window]  
+startup_mode = "Maximized" 
 decorations = "buttonless"
 opacity = 0.85
-blur = true
+blur = false
 
 [font]
 size = 18
