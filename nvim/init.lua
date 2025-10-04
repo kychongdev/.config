@@ -701,13 +701,13 @@ require('lazy').setup({
               },
             },
           },
-          -- filetypes = {
-          --   'typescript',
-          --   'javascript',
-          --   'javascriptreact',
-          --   'typescriptreact',
-          --   'vue',
-          -- },
+          filetypes = {
+            'typescript',
+            'javascript',
+            'javascriptreact',
+            'typescriptreact',
+            'vue',
+          },
         },
         vue_ls = {},
         --
