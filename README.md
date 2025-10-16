@@ -20,4 +20,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 brew install zoxide
 brew install eza
+brew install tmux
+brew install neovim
+brew install fzf
+brew install ripgrep
+brew install fnm
 ```
