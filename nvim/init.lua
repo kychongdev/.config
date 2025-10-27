@@ -679,10 +679,10 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       --
-      local vue_path = vim.fn.expand '$MASON/packages' .. '/vue-language-server' .. '/node_modules/@vue/language-server'
+      -- local vue_path = vim.fn.expand '$MASON/packages' .. '/vue-language-server' .. '/node_modules/@vue/language-server'
       local servers = {
         -- clangd = {},
-        gopls = {},
+        -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -691,25 +691,38 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {
-          init_options = {
-            plugins = {
-              {
-                name = '@vue/typescript-plugin',
-                location = vue_path,
-                languages = { 'vue' },
-              },
-            },
-          },
+        -- ts_ls = {
+        --   init_options = {
+        --     plugins = {
+        --       -- {
+        --       --   name = '@vue/typescript-plugin',
+        --       --   location = vue_path,
+        --       --   languages = { 'vue' },
+        --       -- },
+        --     },
+        --   },
+        --   filetypes = {
+        --     'typescript',
+        --     'javascript',
+        --     'javascriptreact',
+        --     'typescriptreact',
+        --     -- 'vue',
+        --   },
+        -- },
+        tailwindcss = {
           filetypes = {
-            'typescript',
+            'templ',
+            'vue',
+            'html',
+            'astro',
             'javascript',
+            'typescript',
             'javascriptreact',
             'typescriptreact',
-            'vue',
+            'react',
           },
         },
-        vue_ls = {},
+        -- vue_ls = {},
         --
         -- ts_ls = {
         --   root_dir = require('lspconfig').util.root_pattern { 'package.json', 'tsconfig.json' },
@@ -801,14 +814,14 @@ require('lazy').setup({
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { 'prettier', 'deno_fmt', 'biome', 'prettier', stop_after_first = true },
-        html = { 'prettier', 'deno_fmt', 'biome', stop_after_first = true },
-        css = { 'prettier', 'deno_fmt', 'biome', stop_after_first = true },
-        typescript = { 'prettier', 'deno_fmt', 'biome', stop_after_first = true },
+        javascript = { 'prettier', 'deno_fmt', 'biome', 'prettier', stop_after_first = false },
+        html = { 'prettier', 'deno_fmt', 'biome', stop_after_first = false },
+        css = { 'prettier', 'deno_fmt', 'biome', stop_after_first = false },
+        typescript = { 'prettier', 'deno_fmt', 'biome', stop_after_first = false },
         markdown = { 'prettier' },
-        typescriptreact = { 'prettier', 'biome', stop_after_first = true },
-        javascriptreact = { 'prettier', 'biome', stop_after_first = true },
-        ['json'] = { 'prettier', 'biome', stop_after_first = true },
+        typescriptreact = { 'prettier', 'biome', stop_after_first = false },
+        javascriptreact = { 'prettier', 'biome', stop_after_first = false },
+        ['json'] = { 'prettier', 'biome', stop_after_first = false },
       },
     },
   },
