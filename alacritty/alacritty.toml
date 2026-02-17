@@ -7,6 +7,7 @@ startup_mode = "Maximized"
 decorations = "buttonless"
 opacity = 0.85
 blur = false
+dynamic_padding = true
 
 [font]
 size = 18
