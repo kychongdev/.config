@@ -1,0 +1,66 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "edit_predictions": {
+    "provider": "copilot"
+  },
+  "format_on_save": "on",
+  "ui_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "vim_mode": true,
+  "base_keymap": "JetBrains",
+  "ui_font_size": 16.0,
+  "buffer_font_size": 16.0,
+  "theme": "Gruvbox Dark Hard",
+  "languages": {
+    "PHP": {
+      "language_servers": ["intelephense", "!phpactor"],
+      // run laravel pint on save
+      "formatter": {
+        "external": {
+          "command": "bash",
+          "arguments": [
+            "-c",
+            "cat > {buffer_path} && ./vendor/bin/pint --quiet {buffer_path} && cat {buffer_path}"
+          ]
+        }
+      }
+    }
+  },
+  "formatter": {
+    "external": {
+      "command": "bash",
+      "arguments": [
+        "-c",
+        "cat > {buffer_path} && ./vendor/bin/pint --quiet {buffer_path} && cat {buffer_path}"
+      ]
+    }
+  },
+  "file_types": {
+    "PHP": ["*.php", "_ide_helper.php"],
+    "Blade": ["*.blade.php"]
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+  ]
+}
