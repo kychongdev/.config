@@ -8,17 +8,17 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "edit_predictions": {
-    "provider": "copilot"
+    "provider": "copilot",
   },
   "format_on_save": "on",
   "ui_font_family": "JetBrainsMono Nerd Font Mono",
   "buffer_font_family": "JetBrainsMono Nerd Font Mono",
   "telemetry": {
     "diagnostics": false,
-    "metrics": false
+    "metrics": false,
   },
   "session": {
-    "trust_all_worktrees": true
+    "trust_all_worktrees": true,
   },
   "vim_mode": true,
   "base_keymap": "JetBrains",
@@ -34,24 +34,15 @@
           "command": "bash",
           "arguments": [
             "-c",
-            "cat > {buffer_path} && ./vendor/bin/pint --quiet {buffer_path} && cat {buffer_path}"
-          ]
-        }
-      }
-    }
-  },
-  "formatter": {
-    "external": {
-      "command": "bash",
-      "arguments": [
-        "-c",
-        "cat > {buffer_path} && ./vendor/bin/pint --quiet {buffer_path} && cat {buffer_path}"
-      ]
-    }
+            "cat > {buffer_path} && ./vendor/bin/pint --quiet {buffer_path} && cat {buffer_path}",
+          ],
+        },
+      },
+    },
   },
   "file_types": {
     "PHP": ["*.php", "_ide_helper.php"],
-    "Blade": ["*.blade.php"]
+    "Blade": ["*.blade.php"],
   },
   "file_scan_exclusions": [
     "**/.git",
@@ -62,5 +53,5 @@
     "**/.DS_Store",
     "**/Thumbs.db",
     "**/.classpath",
-  ]
+  ],
 }
