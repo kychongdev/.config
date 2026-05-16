@@ -2,7 +2,7 @@
 .idea
 jgit
 github-copilot/
-zed/
+zed/prompts
 
 nvim/.github
 nvim/plugin/packer_compiled.lua
