@@ -85,7 +85,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
 -- ============================================================
--- SECTION 1: FOUNDATION
+-- SECTION 1: OPTIONS
 -- Core Neovim settings, leaders, options, basic keymaps, basic autocmds
 -- ============================================================
 do
@@ -126,9 +126,7 @@ do
   --  Schedule the setting after `UiEnter` because it can increase startup-time.
   --  Remove this option if you want your OS clipboard to remain independent.
   --  See `:help 'clipboard'`
-  vim.schedule(function()
-    vim.o.clipboard = 'unnamedplus'
-  end)
+  vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
   -- Enable break indent
   vim.o.breakindent = true
@@ -177,7 +175,13 @@ do
   -- instead raise a dialog asking if you wish to save the current file(s)
   -- See `:help 'confirm'`
   vim.o.confirm = true
+end
 
+-- ============================================================
+-- SECTION 2: KEYMAPS
+-- basic keymaps
+-- ============================================================
+do
   -- [[ Basic Keymaps ]]
   --  See `:help vim.keymap.set()`
 
@@ -253,14 +257,12 @@ do
   vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',
     group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-    callback = function()
-      vim.hl.on_yank()
-    end,
+    callback = function() vim.hl.on_yank() end,
   })
 end
 
 -- ============================================================
--- SECTION 2: PLUGIN MANAGER INTRO
+-- SECTION 3: PLUGIN MANAGER INTRO
 -- vim.pack intro, build hooks
 -- ============================================================
 do
@@ -291,9 +293,7 @@ do
       local stderr = result.stderr or ''
       local stdout = result.stdout or ''
       local output = stderr ~= '' and stderr or stdout
-      if output == '' then
-        output = 'No output from build command.'
-      end
+      if output == '' then output = 'No output from build command.' end
       vim.notify(('Build failed for %s:\n%s'):format(name, output), vim.log.levels.ERROR)
     end
   end
@@ -306,9 +306,7 @@ do
     callback = function(ev)
       local name = ev.data.spec.name
       local kind = ev.data.kind
-      if kind ~= 'install' and kind ~= 'update' then
-        return
-      end
+      if kind ~= 'install' and kind ~= 'update' then return end
 
       if name == 'telescope-fzf-native.nvim' and vim.fn.executable 'make' == 1 then
         run_build(name, { 'make' }, ev.data.path)
@@ -316,16 +314,12 @@ do
       end
 
       if name == 'LuaSnip' then
-        if vim.fn.has 'win32' ~= 1 and vim.fn.executable 'make' == 1 then
-          run_build(name, { 'make', 'install_jsregexp' }, ev.data.path)
-        end
+        if vim.fn.has 'win32' ~= 1 and vim.fn.executable 'make' == 1 then run_build(name, { 'make', 'install_jsregexp' }, ev.data.path) end
         return
       end
 
       if name == 'nvim-treesitter' then
-        if not ev.data.active then
-          vim.cmd.packadd 'nvim-treesitter'
-        end
+        if not ev.data.active then vim.cmd.packadd 'nvim-treesitter' end
         vim.cmd 'TSUpdate'
         return
       end
@@ -337,12 +331,10 @@ end
 ---function to have less repetition in the following sections.
 ---@param repo string
 ---@return string
-local function gh(repo)
-  return 'https://github.com/' .. repo
-end
+local function gh(repo) return 'https://github.com/' .. repo end
 
 -- ============================================================
--- SECTION 3: UI / CORE UX PLUGINS
+-- SECTION 4: UI / CORE UX PLUGINS
 -- guess-indent, gitsigns, which-key, colorscheme, todo-comments, mini modules
 -- ============================================================
 do
@@ -362,30 +354,21 @@ do
   vim.pack.add { gh 'NMAC427/guess-indent.nvim' }
   require('guess-indent').setup {}
 
-  -- Because lua is a real programming language, you can also have some logic to your installation -
-  -- like only installing a plugin if a condition is met.
-  --
-  -- Here we only install `nvim-web-devicons` (which adds pretty icons) if we have a Nerd Font,
-  -- since otherwise the icons won't display properly.
-  if vim.g.have_nerd_font then
-    vim.pack.add { gh 'nvim-tree/nvim-web-devicons' }
-  end
-
   -- Here is a more advanced configuration example that passes options to `gitsigns.nvim`
   --
   -- See `:help gitsigns` to understand what each configuration key does.
   -- Adds git related signs to the gutter, as well as utilities for managing changes
-  -- vim.pack.add { gh 'lewis6991/gitsigns.nvim' }
-  -- require('gitsigns').setup {
-  --   signs = {
-  --     add = { text = '+' }, ---@diagnostic disable-line: missing-fields
-  --     change = { text = '~' }, ---@diagnostic disable-line: missing-fields
-  --     delete = { text = '_' }, ---@diagnostic disable-line: missing-fields
-  --     topdelete = { text = '‾' }, ---@diagnostic disable-line: missing-fields
-  --     changedelete = { text = '~' }, ---@diagnostic disable-line: missing-fields
-  --   },
-  -- }
-  --
+  vim.pack.add { gh 'lewis6991/gitsigns.nvim' }
+  require('gitsigns').setup {
+    signs = {
+      add = { text = '+' }, ---@diagnostic disable-line: missing-fields
+      change = { text = '~' }, ---@diagnostic disable-line: missing-fields
+      delete = { text = '_' }, ---@diagnostic disable-line: missing-fields
+      topdelete = { text = '‾' }, ---@diagnostic disable-line: missing-fields
+      changedelete = { text = '~' }, ---@diagnostic disable-line: missing-fields
+    },
+  }
+
   -- Useful plugin to show you pending keybinds.
   vim.pack.add { gh 'folke/which-key.nvim' }
   require('which-key').setup {
@@ -398,11 +381,6 @@ do
       { '<leader>t', group = '[T]oggle' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
       { 'gr', group = 'LSP Actions', mode = { 'n' } },
-    },
-    -- Do not trigger in visual mode to avoid a known bug
-    -- https://github.com/folke/which-key.nvim/issues/824
-    triggers = {
-      { '<auto>', mode = 'nisotc' },
     },
   }
 
@@ -432,6 +410,13 @@ do
   -- [[ mini.nvim ]]
   --  A collection of various small independent plugins/modules
   vim.pack.add { gh 'nvim-mini/mini.nvim' }
+
+  -- If a nerd font is available, load the icons module for pretty icons in various plugins.
+  if vim.g.have_nerd_font then
+    require('mini.icons').setup()
+    -- Used for backwards compatibility with plugins that require `nvim-web-devicons` (e.g. telescope.nvim)
+    MiniIcons.mock_nvim_web_devicons()
+  end
 
   -- Better Around/Inside textobjects
   --
@@ -466,16 +451,14 @@ do
   -- default behavior. For example, here we set the section for
   -- cursor location to LINE:COLUMN
   ---@diagnostic disable-next-line: duplicate-set-field
-  statusline.section_location = function()
-    return '%2l:%-2v'
-  end
+  statusline.section_location = function() return '%2l:%-2v' end
 
   -- ... and there is more!
   --  Check out: https://github.com/nvim-mini/mini.nvim
 end
 
 -- ============================================================
--- SECTION 4: SEARCH & NAVIGATION
+-- SECTION 5: SEARCH & NAVIGATION
 -- Telescope setup, keymaps, LSP picker mappings
 -- ============================================================
 do
@@ -509,9 +492,7 @@ do
     gh 'nvim-telescope/telescope.nvim',
     gh 'nvim-telescope/telescope-ui-select.nvim',
   }
-  if vim.fn.executable 'make' == 1 then
-    table.insert(telescope_plugins, gh 'nvim-telescope/telescope-fzf-native.nvim')
-  end
+  if vim.fn.executable 'make' == 1 then table.insert(telescope_plugins, gh 'nvim-telescope/telescope-fzf-native.nvim') end
 
   -- NOTE: You can install multiple plugins at once
   vim.pack.add(telescope_plugins)
@@ -595,21 +576,24 @@ do
 
   -- It's also possible to pass additional configuration options.
   --  See `:help telescope.builtin.live_grep()` for information about particular keys
-  vim.keymap.set('n', '<leader>s/', function()
-    builtin.live_grep {
-      grep_open_files = true,
-      prompt_title = 'Live Grep in Open Files',
-    }
-  end, { desc = '[S]earch [/] in Open Files' })
+  vim.keymap.set(
+    'n',
+    '<leader>s/',
+    function()
+      builtin.live_grep {
+        grep_open_files = true,
+        prompt_title = 'Live Grep in Open Files',
+      }
+    end,
+    { desc = '[S]earch [/] in Open Files' }
+  )
 
   -- Shortcut for searching your Neovim configuration files
-  vim.keymap.set('n', '<leader>sn', function()
-    builtin.find_files { cwd = vim.fn.stdpath 'config' }
-  end, { desc = '[S]earch [N]eovim files' })
+  vim.keymap.set('n', '<leader>sn', function() builtin.find_files { cwd = vim.fn.stdpath 'config', follow = true } end, { desc = '[S]earch [N]eovim files' })
 end
 
 -- ============================================================
--- SECTION 5: LSP
+-- SECTION 6: LSP
 -- LSP keymaps, server configuration, Mason tools installations
 -- ============================================================
 do
@@ -706,9 +690,7 @@ do
       --
       -- This may be unwanted, since they displace some of your code
       if client and client:supports_method('textDocument/inlayHint', event.buf) then
-        map('<leader>th', function()
-          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-        end, '[T]oggle Inlay [H]ints')
+        map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
       end
     end,
   })
@@ -738,9 +720,7 @@ do
 
         if client.workspace_folders then
           local path = client.workspace_folders[1].name
-          if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then
-            return
-          end
+          if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then return end
         end
 
         client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
@@ -799,7 +779,7 @@ do
 end
 
 -- ============================================================
--- SECTION 6: FORMATTING
+-- SECTION 7: FORMATTING
 -- conform.nvim setup and keymap
 -- ============================================================
 do
@@ -835,13 +815,11 @@ do
     },
   }
 
-  vim.keymap.set({ 'n', 'v' }, '<leader>f', function()
-    require('conform').format { async = true }
-  end, { desc = '[F]ormat buffer' })
+  vim.keymap.set({ 'n', 'v' }, '<leader>f', function() require('conform').format { async = true } end, { desc = '[F]ormat buffer' })
 end
 
 -- ============================================================
--- SECTION 7: AUTOCOMPLETE & SNIPPETS
+-- SECTION 8: AUTOCOMPLETE & SNIPPETS
 -- blink.cmp and luasnip setup
 -- ============================================================
 do
@@ -923,7 +901,7 @@ do
 end
 
 -- ============================================================
--- SECTION 8: TREESITTER
+-- SECTION 9: TREESITTER
 -- Parser installation, syntax highlighting, folds, indentation
 -- ============================================================
 do
@@ -943,9 +921,7 @@ do
   ---@param language string
   local function treesitter_try_attach(buf, language)
     -- Check if a parser exists and load it
-    if not vim.treesitter.language.add(language) then
-      return
-    end
+    if not vim.treesitter.language.add(language) then return end
     -- Enable syntax highlighting and other treesitter features
     vim.treesitter.start(buf, language)
 
@@ -959,9 +935,7 @@ do
     local has_indent_query = vim.treesitter.query.get(language, 'indents') ~= nil
 
     -- Enable treesitter based indentation
-    if has_indent_query then
-      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-    end
+    if has_indent_query then vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" end
   end
 
   local available_parsers = require('nvim-treesitter').get_available()
@@ -970,9 +944,7 @@ do
       local buf, filetype = args.buf, args.match
 
       local language = vim.treesitter.language.get_lang(filetype)
-      if not language then
-        return
-      end
+      if not language then return end
 
       local installed_parsers = require('nvim-treesitter').get_installed 'parsers'
 
@@ -981,9 +953,7 @@ do
         treesitter_try_attach(buf, language)
       elseif vim.tbl_contains(available_parsers, language) then
         -- If a parser is available in `nvim-treesitter`, auto-install it and enable it after the installation is done
-        require('nvim-treesitter').install(language):await(function()
-          treesitter_try_attach(buf, language)
-        end)
+        require('nvim-treesitter').install(language):await(function() treesitter_try_attach(buf, language) end)
       else
         -- Try to enable treesitter features in case the parser exists but is not available from `nvim-treesitter`
         treesitter_try_attach(buf, language)
@@ -993,7 +963,7 @@ do
 end
 
 -- ============================================================
--- SECTION 9: OPTIONAL EXAMPLES / NEXT STEPS
+-- SECTION 10: OPTIONAL EXAMPLES / NEXT STEPS
 -- kickstart.plugins.* examples
 -- ============================================================
 do
