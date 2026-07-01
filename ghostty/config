@@ -1,0 +1,4 @@
+theme = dark:Gruvbox Dark Hard,light:Gruvbox Dark Hard
+window-decoration = none
+font-size = 20
+font-family = "JetBrainsMono Nerd Font Mono"
