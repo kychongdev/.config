@@ -25,4 +25,5 @@ brew install neovim
 brew install fzf
 brew install ripgrep
 brew install fnm
+brew install tree-sitter-cli
 ```
