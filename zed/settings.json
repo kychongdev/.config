@@ -7,6 +7,10 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "icon_theme": "Material Icon Theme",
+  "project_panel": {
+    "dock": "left"
+  },
   "edit_predictions": {
     "provider": "copilot",
   },
@@ -24,7 +28,7 @@
   "base_keymap": "JetBrains",
   "ui_font_size": 16.0,
   "buffer_font_size": 16.0,
-  "theme": "Gruvbox Dark Hard",
+  "theme": "Gruvbox Dark",
   "languages": {
     "PHP": {
       "language_servers": ["intelephense", "!phpactor"],
